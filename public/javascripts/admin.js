@@ -1,6 +1,7 @@
 $(() => {
   if ($("body").is(".admin")) {
     loadStudentsTable();
+    loadCoursesTable();
   }
 });
 
@@ -30,6 +31,29 @@ function loadStudentsTable() {
           },
           { data: "currentCredits" },
           { data: "graduated" }
+        ]
+      });
+    }
+  });
+}
+
+function loadCoursesTable() {
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:3000/api/Course",
+    success: data => {
+      $("#coursesTable").DataTable({
+        data: data,
+        columns: [
+          { data: "courseCode" },
+          { data: "courseTitle" },
+          { data: "courseType" },
+          { data: "qualificationType" },
+          { data: "deliveryMode" },
+          { data: "department" },
+          { data: "NFQLevel" },
+          { data: "noOfSemesters" },
+          { data: "totalCredits" }
         ]
       });
     }

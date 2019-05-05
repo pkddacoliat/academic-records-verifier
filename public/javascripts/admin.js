@@ -2,6 +2,7 @@ $(() => {
   if ($("body").is(".admin")) {
     loadStudentsTable();
     loadCoursesTable();
+    loadModulesTable();
   }
 });
 
@@ -54,6 +55,32 @@ function loadCoursesTable() {
           { data: "NFQLevel" },
           { data: "noOfSemesters" },
           { data: "totalCredits" }
+        ]
+      });
+    }
+  });
+}
+
+function loadModulesTable() {
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:3000/api/Module",
+    success: data => {
+      console.log(data);
+      $("#modulesTable").DataTable({
+        data: data,
+        columns: [
+          { data: "crn" },
+          { data: "moduleCode" },
+          { data: "title" },
+          { data: "credits" },
+          { data: "Level" },
+          {
+            data: "deliveries",
+            render: data => {
+              return data[0].course.substring(data[0].course.indexOf("#") + 1);
+            }
+          }
         ]
       });
     }

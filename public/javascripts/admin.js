@@ -24,6 +24,9 @@ $(() => {
         $.ajax({
           type: "POST",
           url: "http://localhost:3000/api/Course",
+          beforeSend: () => {
+            $("#addCourseModalSpinner").attr("hidden", false);
+          },
           data: {
             $class: "ie.cit.blockchain.course.Course",
             courseCode: form_data[0].value,
@@ -41,10 +44,14 @@ $(() => {
           success: data => {
             courses.push(data.courseCode);
             jQuerydfd.resolve(data);
+            $("#addCourseModalSpinner").attr("hidden", true);
             $("#addCourseModal").modal("hide");
             // $("#coursesTable")
             //   .DataTable()
             //   .ajax.reload();
+          },
+          error: () => {
+            $("#addCourseModalSpinner").attr("hidden", true);
           }
         });
       });

@@ -45,23 +45,21 @@
             aria-selected="false"
             >Modules</a
           >
-          <a class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              data-toggle="dropdown"
-              href="#"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="false"
-              >Actions</a
-            >
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Add Student</a>
-              <a class="dropdown-item" href="#">Add Course</a>
-              <a class="dropdown-item" href="#">Add Module</a>
-              <a class="dropdown-item" href="#">Assign Grade</a>
-            </div>
-          </a>
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >Actions</a
+          >
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#" id="addStudentBtn">Add Student</a>
+            <a class="dropdown-item" href="#" id="addCourseBtn">Add Course</a>
+            <a class="dropdown-item" href="#" id="addModuleBtn">Add Module</a>
+            <a class="dropdown-item" href="#" id="assignGradeBtn">Assign Grade</a>
+          </div>
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
@@ -156,5 +154,6 @@
       </p>
     </footer>
     <% include ../partials/scripts %>
+    <% include ../partials/add-course.ejs %>
   </body>
 </html>

@@ -15,97 +15,130 @@
       </div>
       <div class="modal-body">
         <form id="addModuleForm" name="addModuleForm">
-          <div class="form-group">
-            <label for="crnInput">CRN</label>
-            <input
-              type="text"
-              class="form-control"
-              id="crnInput"
-              name="crn"
-              placeholder="15664"
-            />
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="crnInput">CRN</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="crnInput"
+                  name="crn"
+                  placeholder="15664"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="subjectInput">Subject</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="subjectInput"
+                  name="subject"
+                  placeholder="SOFT"
+                />
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="subjectInput">Subject</label>
-            <input
-              type="text"
-              class="form-control"
-              id="subjectInput"
-              name="subject"
-              placeholder="SOFT"
-            />
+
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="courseInput">Course</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="courseInput"
+                  name="course"
+                  placeholder="8016"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="titleInput">Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="titleInput"
+                  name="title"
+                  placeholder="Proj - Research Phase DCOM4"
+                />
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="courseInput">Course</label>
-            <input
-              type="text"
-              class="form-control"
-              id="courseInput"
-              name="course"
-              placeholder="8016"
-            />
+
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="creditsInput">Credits</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="creditsInput"
+                  name="credits"
+                  placeholder="5"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="levelSelect">Level</label>
+                <select class="form-control" name="level" id="levelSelect">
+                  <option disabled selected hidden>Choose Level...</option>
+                  <option value="FUNDAMENTAL">Fundamental</option>
+                  <option value="ADVANCED">Advanced</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="titleInput">Title</label>
-            <input
-              type="text"
-              class="form-control"
-              id="titleInput"
-              name="title"
-              placeholder="Proj - Research Phase DCOM4"
-            />
-          </div>
-          <div class="form-group">
-            <label for="creditsInput">Credits</label>
-            <input
-              type="text"
-              class="form-control"
-              id="creditsInput"
-              name="credits"
-              placeholder="5"
-            />
-          </div>
-          <div class="form-group">
-            <label for="levelSelect">Level</label>
-            <select class="form-control" name="level" id="levelSelect">
-              <option disabled selected hidden>Choose Level...</option>
-              <option value="FUNDAMENTAL">Fundamental</option>
-              <option value="ADVANCED">Advanced</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="deliverySelect">Delivered In</label>
-            <select
-              class="form-control"
-              name="deliveryCourse"
-              id="deliverySelect"
-            >
-              <option disabled selected hidden>Choose Course...</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="stageSelect">Stage</label>
-            <select class="form-control" name="stage" id="stageSelect">
-              <option disabled selected hidden>Choose Stage...</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="semesterSelect">Semester</label>
-            <select class="form-control" name="semester" id="semesterSelect">
-              <option disabled selected hidden>Choose Semester...</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-            </select>
+
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="deliverySelect">Delivered In</label>
+                <select
+                  class="form-control"
+                  name="deliveryCourse"
+                  id="deliverySelect"
+                >
+                  <option disabled selected hidden>Choose Course...</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="stageSelect">Stage</label>
+                <select class="form-control" name="stage" id="stageSelect">
+                  <option disabled selected hidden>Choose Stage...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="semesterSelect">Semester</label>
+                <select
+                  class="form-control"
+                  name="semester"
+                  id="semesterSelect"
+                >
+                  <option disabled selected hidden>Choose Semester...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+              </div>
+            </div>
           </div>
         </form>
       </div>

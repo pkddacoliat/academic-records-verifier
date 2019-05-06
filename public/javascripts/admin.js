@@ -1,7 +1,7 @@
 $(() => {
   if ($("body").is(".admin")) {
     loadStudentsTable();
-    loadCoursesTable();
+    let courses = loadCoursesTable();
     loadModulesTable();
 
     $("#addCourseBtn").on("click", () => {
@@ -14,7 +14,6 @@ $(() => {
     $("#addCourseModalBtn").click(() => {
       let form = $("#addCourseForm :input");
       let form_data = form.serializeArray();
-      console.log(form_data);
       form_data.forEach(item => {
         if (item.name === "department") {
           item.value = convertCodeToDepartment(item.value);
@@ -40,11 +39,73 @@ $(() => {
             modules: []
           },
           success: data => {
+            courses.push(data.courseCode);
             jQuerydfd.resolve(data);
             $("#addCourseModal").modal("hide");
-            $("#coursesTable")
-              .DataTable()
-              .ajax.reload();
+            // $("#coursesTable")
+            //   .DataTable()
+            //   .ajax.reload();
+          }
+        });
+      });
+    });
+
+    $("#addModuleBtn").on("click", () => {
+      resetAddModuleModal();
+      $("#addModuleModal").modal({
+        backdrop: "static",
+        keyboard: false
+      });
+      courses.forEach(item => {
+        $("#deliverySelect").append(
+          '<option class="deliverySelectOption" value="' +
+            item +
+            '">' +
+            item +
+            "</option>"
+        );
+      });
+    });
+
+    $("#addModuleModalBtn").click(() => {
+      let form = $("#addModuleForm :input");
+      let form_data = form.serializeArray();
+      let subjectCourse = "";
+      form_data.forEach(item => {
+        if (item.name === "subject" || item.name === "course") {
+          subjectCourse += item.value;
+        }
+      });
+      form_data.push({ name: "subjectCourse", value: subjectCourse });
+
+      return $.Deferred(jQuerydfd => {
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:3000/api/Module",
+          data: {
+            $class: "ie.cit.blockchain.module.Module",
+            crn: form_data[0].value,
+            moduleCode: form_data[9].value,
+            title: form_data[3].value,
+            credits: form_data[4].value,
+            Level: form_data[5].value,
+            deliveries: [
+              {
+                $class: "ie.cit.blockchain.module.Delivery",
+                course:
+                  "resource:ie.cit.blockchain.course.Course#" +
+                  form_data[6].value,
+                stage: form_data[7].value,
+                semester: form_data[8].value
+              }
+            ]
+          },
+          success: data => {
+            jQuerydfd.resolve(data);
+            $("#addModuleModal").modal("hide");
+            // $("#coursesTable")
+            //   .DataTable()
+            //   .ajax.reload();
           }
         });
       });
@@ -85,10 +146,14 @@ function loadStudentsTable() {
 }
 
 function loadCoursesTable() {
+  let courses = [];
   $.ajax({
     type: "GET",
     url: "http://localhost:3000/api/Course",
     success: data => {
+      data.forEach(item => {
+        courses.push(item.courseCode);
+      });
       $("#coursesTable").DataTable({
         data: data,
         columns: [
@@ -105,6 +170,7 @@ function loadCoursesTable() {
       });
     }
   });
+  return courses;
 }
 
 function loadModulesTable() {
@@ -170,4 +236,8 @@ function convertCodeToDepartment(code) {
   if (code === "200") return "Sport, Leisure and Childhood Studies";
   if (code === "180") return "Teaching and Learning Unit";
   if (code === "224") return "Tourism and Hospitality";
+}
+
+function resetAddModuleModal() {
+  $("#deliverySelect option").remove();
 }

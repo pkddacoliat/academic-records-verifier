@@ -89,6 +89,9 @@ $(() => {
         $.ajax({
           type: "POST",
           url: "http://localhost:3000/api/Module",
+          beforeSend: () => {
+            $("#addModuleModalSpinner").attr("hidden", false);
+          },
           data: {
             $class: "ie.cit.blockchain.module.Module",
             crn: form_data[0].value,
@@ -109,10 +112,14 @@ $(() => {
           },
           success: data => {
             jQuerydfd.resolve(data);
+            $("#addModuleModalSpinner").attr("hidden", true);
             $("#addModuleModal").modal("hide");
             // $("#coursesTable")
             //   .DataTable()
             //   .ajax.reload();
+          },
+          error: () => {
+            $("#addModuleModalSpinner").attr("hidden", true);
           }
         });
       });

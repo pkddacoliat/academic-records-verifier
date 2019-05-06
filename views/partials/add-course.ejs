@@ -26,146 +26,194 @@
       </div>
       <div class="modal-body">
         <form id="addCourseForm" name="addCourseForm">
-          <div class="form-group">
-            <label for="courseCodeInput">Course Code</label>
-            <input
-              type="text"
-              class="form-control"
-              id="courseCodeInput"
-              name="courseCode"
-              placeholder="CR106"
-            />
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="courseCodeInput">Course Code</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="courseCodeInput"
+                  name="courseCode"
+                  placeholder="CR106"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="courseTitleInput">Course Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="courseTitleInput"
+                  name="courseTitle"
+                  placeholder="Software Development"
+                />
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="courseTitleInput">Course Title</label>
-            <input
-              type="text"
-              class="form-control"
-              id="courseTitleInput"
-              name="courseTitle"
-              placeholder="Software Development"
-            />
+
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="departmentInput">Department</label>
+                <select class="form-control" name="department">
+                  <option disabled selected hidden>Choose Deparment...</option>
+                  <option value="111"
+                    >Accounting &amp; Information Systems</option
+                  >
+                  <option value="127"
+                    >Applied Physics and Instrumentation</option
+                  >
+                  <option value="201">Applied Social Studies</option>
+                  <option value="122">Architecture</option>
+                  <option value="213">Art &amp; Design Education</option>
+                  <option value="212"
+                    >Art Therapy &amp; Continuing Visual Education</option
+                  >
+                  <option value="235">Arts in Health and Education</option>
+                  <option value="128">Biological Sciences</option>
+                  <option value="185">Centre of Craft Studies</option>
+                  <option value="129">Chemistry</option>
+                  <option value="133">CIT Cork School of Music</option>
+                  <option value="134"
+                    >CIT Crawford College of Art &amp; Design</option
+                  >
+                  <option value="252"
+                    >CIT Crawford College of Art &amp; Design and UCC School of
+                    Education</option
+                  >
+                  <option value="120"
+                    >Civil, Structural &amp; Environmental Engine</option
+                  >
+                  <option value="130">Computer Science</option>
+                  <option value="121">Construction</option>
+                  <option value="112">Continuing Education</option>
+                  <option value="113"
+                    >DEIS: Department of Education Development</option
+                  >
+                  <option value="114">Educational Opportunities</option>
+                  <option value="123"
+                    >Electrical &amp; Electronic Engineering</option
+                  >
+                  <option value="124">Electronic Engineering</option>
+                  <option value="204"
+                    >Fine Art &amp; Applied Art, CIT CCAD</option
+                  >
+                  <option value="197">Management and Enterprise</option>
+                  <option value="115">Management and Marketing</option>
+                  <option value="199"
+                    >Marketing and International Business</option
+                  >
+                  <option value="131">Mathematics</option>
+                  <option value="126"
+                    >Mechanical and Automotive Engineering</option
+                  >
+                  <option value="125"
+                    >Mechanical, Biomedical &amp; Manufacturing Eng</option
+                  >
+                  <option value="116">Media Communications</option>
+                  <option value="132">National Maritime College</option>
+                  <option value="198"
+                    >Organisation and Professional Development</option
+                  >
+                  <option value="214">Physical Sciences</option>
+                  <option value="119"
+                    >Process, Energy and Transport Engineering</option
+                  >
+                  <option value="200"
+                    >Sport, Leisure and Childhood Studies</option
+                  >
+                  <option value="180">Teaching &amp; Learning Unit</option>
+                  <option value="224">Tourism &amp; Hospitality</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="departmentInput">Department</label>
-            <select class="form-control" name="department">
-              <option disabled selected hidden>Choose Deparment...</option>
-              <option value="111">Accounting &amp; Information Systems</option>
-              <option value="127">Applied Physics and Instrumentation</option>
-              <option value="201">Applied Social Studies</option>
-              <option value="122">Architecture</option>
-              <option value="213">Art &amp; Design Education</option>
-              <option value="212"
-                >Art Therapy &amp; Continuing Visual Education</option
-              >
-              <option value="235">Arts in Health and Education</option>
-              <option value="128">Biological Sciences</option>
-              <option value="185">Centre of Craft Studies</option>
-              <option value="129">Chemistry</option>
-              <option value="133">CIT Cork School of Music</option>
-              <option value="134"
-                >CIT Crawford College of Art &amp; Design</option
-              >
-              <option value="252"
-                >CIT Crawford College of Art &amp; Design and UCC School of
-                Education</option
-              >
-              <option value="120"
-                >Civil, Structural &amp; Environmental Engine</option
-              >
-              <option value="130">Computer Science</option>
-              <option value="121">Construction</option>
-              <option value="112">Continuing Education</option>
-              <option value="113"
-                >DEIS: Department of Education Development</option
-              >
-              <option value="114">Educational Opportunities</option>
-              <option value="123"
-                >Electrical &amp; Electronic Engineering</option
-              >
-              <option value="124">Electronic Engineering</option>
-              <option value="204">Fine Art &amp; Applied Art, CIT CCAD</option>
-              <option value="197">Management and Enterprise</option>
-              <option value="115">Management and Marketing</option>
-              <option value="199">Marketing and International Business</option>
-              <option value="131">Mathematics</option>
-              <option value="126">Mechanical and Automotive Engineering</option>
-              <option value="125"
-                >Mechanical, Biomedical &amp; Manufacturing Eng</option
-              >
-              <option value="116">Media Communications</option>
-              <option value="132">National Maritime College</option>
-              <option value="198"
-                >Organisation and Professional Development</option
-              >
-              <option value="214">Physical Sciences</option>
-              <option value="119"
-                >Process, Energy and Transport Engineering</option
-              >
-              <option value="200">Sport, Leisure and Childhood Studies</option>
-              <option value="180">Teaching &amp; Learning Unit</option>
-              <option value="224">Tourism &amp; Hospitality</option>
-            </select>
+
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="courseTypeInput">Type</label>
+                <select class="form-control" name="courseType">
+                  <option disabled selected hidden>Choose Type...</option>
+                  <option value="CERTIFICATE">Certificate</option>
+                  <option value="HIGHER_CERTIFICATE">Higher Certificate</option>
+                  <option value="HIGHER_CERTIFICATE_BSC"
+                    >Higher Certificate, BSc</option
+                  >
+                  <option value="HONOURS_DEGREE">Honours Degree</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="qualificationTypeInput">Qualification</label>
+                <select class="form-control" name="qualificationType">
+                  <option disabled selected hidden
+                    >Choose Qualification...</option
+                  >
+                  <option value="SPECIAL_AWARD">Special Award</option>
+                  <option value="HIGHER_CERTIFICATE">Higher Certificate</option>
+                  <option value="BSC">BSc</option>
+                  <option value="BSC_HONOURS">BSc Honours</option>
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="courseTypeInput">Type</label>
-            <select class="form-control" name="courseType">
-              <option disabled selected hidden>Choose Type...</option>
-              <option value="CERTIFICATE">Certificate</option>
-              <option value="HIGHER_CERTIFICATE">Higher Certificate</option>
-              <option value="HIGHER_CERTIFICATE_BSC"
-                >Higher Certificate BSc</option
-              >
-              <option value="HONOURS_DEGREE">Honours Degree</option>
-            </select>
+
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="deliveryModeInput">Type of Study</label>
+                <select class="form-control" name="deliveryMode">
+                  <option disabled selected hidden
+                    >Choose Type of Study...</option
+                  >
+                  <option value="PART_TIME">Part Time</option>
+                  <option value="FULL_TIME">Full Time</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="noOfSemestersInput">Number of Semesters</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="noOfSemesters"
+                  name="noOfSemesters"
+                  placeholder="8"
+                />
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="qualificationTypeInput">Qualification Type</label>
-            <select class="form-control" name="qualificationType">
-              <option disabled selected hidden>Choose Qualification...</option>
-              <option value="SPECIAL_AWARD">Special Award</option>
-              <option value="HIGHER_CERTIFICATE">Higher Certificate</option>
-              <option value="BSC">BSc</option>
-              <option value="BSC_HONOURS">BSc Honours</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="deliveryModeInput">Type of Study</label>
-            <select class="form-control" name="deliveryMode">
-              <option disabled selected hidden>Choose Type of Study...</option>
-              <option value="PART_TIME">Part Time</option>
-              <option value="FULL_TIME">Full Time</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="noOfSemestersInput">Number of Semesters</label>
-            <input
-              type="text"
-              class="form-control"
-              id="noOfSemesters"
-              name="noOfSemesters"
-              placeholder="8"
-            />
-          </div>
-          <div class="form-group">
-            <label for="totalCreditsInput">Total Credits</label>
-            <input
-              type="text"
-              class="form-control"
-              id="totalCreditsInput"
-              name="totalCredits"
-              placeholder="240"
-            />
-          </div>
-          <div class="form-group">
-            <label for="NFQLevel">NFQ Level</label>
-            <select class="form-control" name="NFQLevel">
-              <option disabled selected hidden>Choose NFQ Level...</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="8">9</option>
-            </select>
+
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="totalCreditsInput">Total Credits</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="totalCreditsInput"
+                  name="totalCredits"
+                  placeholder="240"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="NFQLevel">NFQ Level</label>
+                <select class="form-control" name="NFQLevel">
+                  <option disabled selected hidden>Choose NFQ Level...</option>
+                  <option value="6">Level 6</option>
+                  <option value="7">Level 7</option>
+                  <option value="8">Level 8</option>
+                  <option value="8">Level 9</option>
+                </select>
+              </div>
+            </div>
           </div>
         </form>
       </div>

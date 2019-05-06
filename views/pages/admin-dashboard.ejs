@@ -46,7 +46,7 @@
             >Modules</a
           >
           <a
-            class="nav-link dropdown-toggle"
+            class="nav-link dropdown-toggle ml-auto"
             data-toggle="dropdown"
             href="#"
             role="button"
@@ -58,7 +58,9 @@
             <a class="dropdown-item" href="#" id="addStudentBtn">Add Student</a>
             <a class="dropdown-item" href="#" id="addCourseBtn">Add Course</a>
             <a class="dropdown-item" href="#" id="addModuleBtn">Add Module</a>
-            <a class="dropdown-item" href="#" id="assignGradeBtn">Assign Grade</a>
+            <a class="dropdown-item" href="#" id="assignGradeBtn"
+              >Assign Grade</a
+            >
           </div>
         </div>
       </nav>
@@ -153,8 +155,8 @@
         Copyright &copy; Patrick Kent Dacoliat 2019
       </p>
     </footer>
-    <% include ../partials/scripts %>
-    <% include ../partials/add-course.ejs %>
-    <% include ../partials/add-module.ejs %>
+    <% include ../partials/scripts %> <% include ../partials/add-course.ejs %>
+    <% include ../partials/add-module.ejs %> <% include
+    ../partials/assign-grade.ejs %>
   </body>
 </html>

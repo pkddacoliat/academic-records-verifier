@@ -1,8 +1,12 @@
 $(() => {
   if ($("body").is(".admin")) {
-    loadStudentsTable();
+    let students = loadStudentsTable();
     let courses = loadCoursesTable();
-    loadModulesTable();
+    let modules = loadModulesTable();
+
+    /**
+     * Adding a course
+     */
 
     $("#addCourseBtn").on("click", () => {
       $("#addCourseModal").modal({
@@ -56,6 +60,10 @@ $(() => {
         });
       });
     });
+
+    /**
+     * Adding a module
+     */
 
     $("#addModuleBtn").on("click", () => {
       resetAddModuleModal();
@@ -124,14 +132,73 @@ $(() => {
         });
       });
     });
+
+    /**
+     * Assigning a grade
+     */
+
+    $("#assignGradeBtn").on("click", () => {
+      resetAssignGradeModal();
+      $("#assignGradeModal").modal({
+        backdrop: "static",
+        keyboard: false
+      });
+      students.forEach(item => {
+        $("#studentSelect").append(
+          '<option value="' + item + '">' + item + "</option>"
+        );
+      });
+      modules.forEach(item => {
+        $("#moduleSelect").append(
+          '<option value="' + item + '">' + item + "</option>"
+        );
+      });
+    });
+
+    $("#assignGradeModalBtn").click(() => {
+      let form = $("#assignGradeForm :input");
+      let form_data = form.serializeArray();
+      console.log(form_data);
+
+      return $.Deferred(jQuerydfd => {
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:3000/api/AssignGrade",
+          beforeSend: () => {
+            $("#assignGradeModalSpinner").attr("hidden", false);
+          },
+          data: {
+            $class: "ie.cit.blockchain.grade.AssignGrade",
+            moduleCRN: form_data[1].value,
+            studentNumber: form_data[0].value,
+            finalGrade: form_data[2].value
+          },
+          success: data => {
+            jQuerydfd.resolve(data);
+            $("#assignGradeModalSpinner").attr("hidden", true);
+            $("#assignGradeModal").modal("hide");
+            // $("#coursesTable")
+            //   .DataTable()
+            //   .ajax.reload();
+          },
+          error: () => {
+            $("#assignGradeModalSpinner").attr("hidden", true);
+          }
+        });
+      });
+    });
   }
 });
 
 function loadStudentsTable() {
+  let students = [];
   $.ajax({
     type: "GET",
     url: "http://localhost:3000/api/Student",
     success: data => {
+      data.forEach(item => {
+        students.push(item.participantNo);
+      });
       $("#studentsTable").DataTable({
         data: data,
         columns: [
@@ -157,6 +224,7 @@ function loadStudentsTable() {
       });
     }
   });
+  return students;
 }
 
 function loadCoursesTable() {
@@ -188,10 +256,14 @@ function loadCoursesTable() {
 }
 
 function loadModulesTable() {
+  let modules = [];
   $.ajax({
     type: "GET",
     url: "http://localhost:3000/api/Module",
     success: data => {
+      data.forEach(item => {
+        modules.push(item.crn);
+      });
       $("#modulesTable").DataTable({
         data: data,
         columns: [
@@ -210,6 +282,7 @@ function loadModulesTable() {
       });
     }
   });
+  return modules;
 }
 
 function convertCodeToDepartment(code) {
@@ -254,4 +327,18 @@ function convertCodeToDepartment(code) {
 
 function resetAddModuleModal() {
   $("#deliverySelect option").remove();
+  $("#deliverySelect").append(
+    "<option disabled selected hidden>Choose Course...</option"
+  );
+}
+
+function resetAssignGradeModal() {
+  $("#studentSelect option").remove();
+  $("#studentSelect").append(
+    "<option disabled selected hidden>Choose Student...</option"
+  );
+  $("#moduleSelect option").remove();
+  $("#moduleSelect").append(
+    "<option disabled selected hidden>Choose Module...</option"
+  );
 }

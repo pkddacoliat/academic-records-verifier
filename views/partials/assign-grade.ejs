@@ -1,0 +1,84 @@
+<!-- Add Course Modal -->
+<div
+  class="modal fade"
+  id="assignGradeModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalTitle"
+  aria-hidden="true"
+  backdrop="static"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">Assign Grade</h5>
+      </div>
+      <div class="modal-body">
+        <form id="assignGradeForm" name="assignGradeForm">
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="studentSelect">Student No</label>
+                <select
+                  class="form-control"
+                  name="studentNumber"
+                  id="studentSelect"
+                >
+                  <option disabled selected hidden>Choose Student...</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="moduleSelect">Module CRN</label>
+                <select class="form-control" name="moduleCRN" id="moduleSelect">
+                  <option disabled selected hidden>Choose Module...</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="finalGradeInput">Final Grade</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="finalGradeInput"
+                  name="finalGrade"
+                  placeholder="5"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div
+          class="spinner-border text-dark"
+          role="status"
+          id="assignGradeModalSpinner"
+          hidden
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          id="cancelModalBtn"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          id="assignGradeModalBtn"
+          value="submit"
+        >
+          Assign Grade
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

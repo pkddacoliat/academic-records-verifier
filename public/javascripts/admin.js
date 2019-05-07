@@ -175,6 +175,9 @@ $(() => {
             jQuerydfd.resolve(data);
             $("#assignGradeModalSpinner").attr("hidden", true);
             $("#assignGradeModal").modal("hide");
+            $("#studentsTableAdmin")
+              .DataTable()
+              .ajax.reload();
           },
           error: () => {
             $("#assignGradeModalSpinner").attr("hidden", true);

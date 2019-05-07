@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <% include ../partials/header %>
+  <body class="verifier">
+    <% include ../partials/navigation %>
+
+    <!-- Page Content -->
+    <div class="container py-5">
+      <div class="row mt-5">
+        <div class="col">
+          <h1>Verifier</h1>
+          <hr />
+        </div>
+      </div>
+
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a
+            class="nav-item nav-link active"
+            id="nav-students-tab"
+            data-toggle="tab"
+            href="#nav-students"
+            role="tab"
+            aria-controls="nav-students"
+            aria-selected="true"
+            >Students</a
+          >
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div
+          class="tab-pane fade show active"
+          id="nav-students"
+          role="tabpanel"
+          aria-labelledby="nav-students-tab"
+        >
+          <div class="table-responsive mt-3">
+            <table
+              id="studentsTable"
+              class="table table-striped table-bordered"
+              style="width:100%"
+            >
+              <thead>
+                <tr>
+                  <th>Student No</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>College</th>
+                  <th>Course</th>
+                  <th>Credits</th>
+                  <th>Graduated</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <footer class="container">
+      <hr />
+      <p class="text-center">
+        Copyright &copy; Patrick Kent Dacoliat 2019
+      </p>
+    </footer>
+    <% include ../partials/scripts %>
+  </body>
+</html>

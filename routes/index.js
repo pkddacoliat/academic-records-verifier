@@ -11,5 +11,10 @@ router.get('/admin/dashboard', function(req, res, next) {
   res.render('pages/admin-dashboard', { title: 'Admin Dashboard' });
 });
 
+/* GET verifier page. */
+router.get('/verifier', function(req, res, next) {
+  res.render('pages/verifier', { title: 'Admin Dashboard' });
+});
+
 
 module.exports = router;

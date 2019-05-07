@@ -1,6 +1,6 @@
 $(() => {
   if ($("body").is(".admin")) {
-    let students = loadStudentsTable();
+    let students = loadStudentsTableForAdmin();
     let courses = loadCoursesTable();
     let modules = loadModulesTable();
 
@@ -185,9 +185,9 @@ $(() => {
   }
 });
 
-function loadStudentsTable() {
+function loadStudentsTableForAdmin() {
   let students = [];
-  $("#studentsTable").DataTable({
+  $("#studentsTableAdmin").DataTable({
     ajax: {
       type: "GET",
       url: "http://localhost:3000/api/Student",

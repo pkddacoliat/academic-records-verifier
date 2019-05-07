@@ -1,12 +1,12 @@
 $(() => {
   if ($("body").is(".verifier")) {
-    let students = loadStudentsTable();
+    let students = loadStudentsTableForVerifier();
   }
 });
 
-function loadStudentsTable() {
+function loadStudentsTableForVerifier() {
   let students = [];
-  $("#studentsTable").DataTable({
+  $("#studentsTableVerifier").DataTable({
     ajax: {
       type: "GET",
       url: "http://localhost:3000/api/Student",

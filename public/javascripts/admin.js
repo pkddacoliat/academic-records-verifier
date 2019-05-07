@@ -46,13 +46,12 @@ $(() => {
             modules: []
           },
           success: data => {
-            courses.push(data.courseCode);
             jQuerydfd.resolve(data);
             $("#addCourseModalSpinner").attr("hidden", true);
             $("#addCourseModal").modal("hide");
-            // $("#coursesTable")
-            //   .DataTable()
-            //   .ajax.reload();
+            $("#coursesTable")
+              .DataTable()
+              .ajax.reload();
           },
           error: () => {
             $("#addCourseModalSpinner").attr("hidden", true);
@@ -122,9 +121,9 @@ $(() => {
             jQuerydfd.resolve(data);
             $("#addModuleModalSpinner").attr("hidden", true);
             $("#addModuleModal").modal("hide");
-            // $("#coursesTable")
-            //   .DataTable()
-            //   .ajax.reload();
+            $("#modulesTable")
+              .DataTable()
+              .ajax.reload();
           },
           error: () => {
             $("#addModuleModalSpinner").attr("hidden", true);
@@ -158,7 +157,6 @@ $(() => {
     $("#assignGradeModalBtn").click(() => {
       let form = $("#assignGradeForm :input");
       let form_data = form.serializeArray();
-      console.log(form_data);
 
       return $.Deferred(jQuerydfd => {
         $.ajax({
@@ -177,9 +175,6 @@ $(() => {
             jQuerydfd.resolve(data);
             $("#assignGradeModalSpinner").attr("hidden", true);
             $("#assignGradeModal").modal("hide");
-            // $("#coursesTable")
-            //   .DataTable()
-            //   .ajax.reload();
           },
           error: () => {
             $("#assignGradeModalSpinner").attr("hidden", true);
@@ -192,95 +187,133 @@ $(() => {
 
 function loadStudentsTable() {
   let students = [];
-  $.ajax({
-    type: "GET",
-    url: "http://localhost:3000/api/Student",
-    success: data => {
-      data.forEach(item => {
-        students.push(item.participantNo);
-      });
-      $("#studentsTable").DataTable({
-        data: data,
-        columns: [
-          { data: "participantNo" },
-          { data: "contact.firstName" },
-          { data: "contact.lastName" },
-          { data: "contact.email" },
-          {
-            data: "college",
-            render: data => {
-              return data.substring(data.indexOf("#") + 1);
-            }
-          },
-          {
-            data: "course",
-            render: data => {
-              return data.substring(data.indexOf("#") + 1);
-            }
-          },
-          { data: "currentCredits" },
-          { data: "graduated" }
-        ]
-      });
-    }
+  $("#studentsTable").DataTable({
+    ajax: {
+      type: "GET",
+      url: "http://localhost:3000/api/Student",
+      data: data => {
+        return (data = JSON.stringify(data));
+      },
+      dataSrc: "",
+      complete: data => {
+        data.responseJSON.forEach(student => {
+          students.push(student.participantNo);
+        });
+      }
+    },
+    columns: [
+      { data: "participantNo" },
+      { data: "contact.firstName" },
+      { data: "contact.lastName" },
+      { data: "contact.email" },
+      {
+        data: "college",
+        render: data => {
+          return data.substring(data.indexOf("#") + 1);
+        }
+      },
+      {
+        data: "course",
+        render: data => {
+          return data.substring(data.indexOf("#") + 1);
+        }
+      },
+      { data: "currentCredits" },
+      { data: "graduated" }
+    ]
   });
   return students;
 }
 
 function loadCoursesTable() {
   let courses = [];
-  $.ajax({
-    type: "GET",
-    url: "http://localhost:3000/api/Course",
-    success: data => {
-      data.forEach(item => {
-        courses.push(item.courseCode);
-      });
-      $("#coursesTable").DataTable({
-        data: data,
-        columns: [
-          { data: "courseCode" },
-          { data: "courseTitle" },
-          { data: "courseType" },
-          { data: "qualificationType" },
-          { data: "deliveryMode" },
-          { data: "department" },
-          { data: "NFQLevel" },
-          { data: "noOfSemesters" },
-          { data: "totalCredits" }
-        ]
-      });
-    }
+  $("#coursesTable").DataTable({
+    ajax: {
+      type: "GET",
+      url: "http://localhost:3000/api/Course",
+      data: data => {
+        return (data = JSON.stringify(data));
+      },
+      dataSrc: "",
+      complete: data => {
+        data.responseJSON.forEach(course => {
+          courses.push(course.courseCode);
+        });
+      }
+    },
+    columns: [
+      { data: "courseCode" },
+      { data: "courseTitle" },
+      {
+        data: "courseType",
+        render: data => {
+          if (data === "CERTIFICATE") return "Certificate";
+          if (data === "HIGHER_CERTIFICATE") return "Higher Certificate";
+          if (data === "HIGHER_CERTIFICATE_BSC")
+            return "Higher Certificate, BSc";
+          if (data === "HONOURS_DEGREE") return "Honours Degree";
+        }
+      },
+      {
+        data: "qualificationType",
+        render: data => {
+          if (data === "SPECIAL_AWARD") return "Special Award";
+          if (data === "HIGHER_CERTIFICATE") return "Higher Certificate";
+          if (data === "BSC") return "BSc";
+          if (data === "BSC_HONOURS") return "BSc Honours";
+        }
+      },
+      {
+        data: "deliveryMode",
+        render: data => {
+          if (data === "PART_TIME") return "Part Time";
+          if (data === "FULL_TIME") return "Full Time";
+        }
+      },
+      { data: "department" },
+      { data: "NFQLevel" },
+      { data: "noOfSemesters" },
+      { data: "totalCredits" }
+    ]
   });
   return courses;
 }
 
 function loadModulesTable() {
   let modules = [];
-  $.ajax({
-    type: "GET",
-    url: "http://localhost:3000/api/Module",
-    success: data => {
-      data.forEach(item => {
-        modules.push(item.crn);
-      });
-      $("#modulesTable").DataTable({
-        data: data,
-        columns: [
-          { data: "crn" },
-          { data: "moduleCode" },
-          { data: "title" },
-          { data: "credits" },
-          { data: "Level" },
-          {
-            data: "deliveries",
-            render: data => {
-              return data[0].course.substring(data[0].course.indexOf("#") + 1);
-            }
-          }
-        ]
-      });
-    }
+  $("#modulesTable").DataTable({
+    ajax: {
+      type: "GET",
+      url: "http://localhost:3000/api/Module",
+      data: data => {
+        return (data = JSON.stringify(data));
+      },
+      dataSrc: "",
+      complete: data => {
+        data.responseJSON.forEach(module => {
+          modules.push(module.crn);
+        });
+      }
+    },
+    columns: [
+      { data: "crn" },
+      { data: "moduleCode" },
+      { data: "title" },
+      { data: "credits" },
+      {
+        data: "Level",
+        render: data => {
+          if (data === "FUNDAMENTAL") return "Fundamental";
+          if (data === "ADVANCED") return "Advanced";
+        }
+      },
+      {
+        data: "deliveries",
+        render: data => {
+          return data[0].course.substring(data[0].course.indexOf("#") + 1);
+        }
+      }
+    ]
   });
   return modules;
 }

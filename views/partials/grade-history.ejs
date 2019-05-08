@@ -1,0 +1,100 @@
+<!-- Add Course Modal -->
+<div
+  class="modal fade"
+  id="gradeHistoryModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalTitle"
+  aria-hidden="true"
+  backdrop="static"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">Grade History</h5>
+      </div>
+      <div class="modal-body">
+        <form id="gradeHistoryForm" name="gradeHistoryForm">
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="moduleCRNInput">Module CRN</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="moduleCRNInput"
+                  name="moduleCRN"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="studentNoInput">Student No</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="studentNoInput"
+                  name="studentNo"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="finalGradeInput">Final Grade</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="finalGradeInput"
+                  name="finalGrade"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="transactionIdInput">Transaction Id</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="transactionIdInput"
+                  name="transactionId"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <div class="form-group">
+                <label for="timeStampInput">Timestamp</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="timeStampInput"
+                  name="timeStamp"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          id="closeGradeHistoryModalBtn"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

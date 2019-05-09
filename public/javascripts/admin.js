@@ -205,7 +205,12 @@ function loadStudentsTableForAdmin() {
       }
     },
     columns: [
-      { data: "participantNo" },
+      {
+        data: "participantNo",
+        render: data => {
+          return '<a href="/student/' + data + '">' + data + "</a>";
+        }
+      },
       { data: "contact.firstName" },
       { data: "contact.lastName" },
       { data: "contact.email" },
